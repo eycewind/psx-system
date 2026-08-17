@@ -1,0 +1,6 @@
+[submodule "repos/psx-ml-research"]
+	path = repos/psx-ml-research
+	url = git@github.com:eycewind/psx-ml-research.git
+[submodule "repos/stock-watcher"]
+	path = repos/stock-watcher
+	url = git@github.com:eycewind/psx-stock-watcher.git
