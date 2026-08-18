@@ -1,17 +1,18 @@
 # C17 Interfaces
 
-C17 introduces two system-level interfaces that must be frozen before final
-acceptance:
+C17 freezes two new cross-repository interfaces:
 
 1. `PHASE-A-DECISION.md`
-   - durable after-close ML signal decision consumed by next-session Phase B.
+   - durable after-close trading decision;
+   - Phase B consumes it without recomputing signals.
 
 2. `LIVE-OPEN.md`
-   - canonical execution-session opening-price representation supplied from
-     stock-watcher live market data to ML Phase B.
+   - settled execution-session opening prices sourced from stock-watcher
+     `market_quotes`;
+   - normal-session observations before 09:40 PKT are not eligible;
+   - required symbols must have valid settled opens.
 
 The existing C16 canonical watcher JSON ticket remains unchanged.
 
-Component implementations must not independently invent incompatible forms of
-these interfaces. Any mismatch discovered during implementation must be
-reported back to the system architect.
+These interfaces are system-owned. Component agents must report an interface
+conflict rather than independently changing their meaning.
